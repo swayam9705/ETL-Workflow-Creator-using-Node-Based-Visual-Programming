@@ -34,3 +34,11 @@
 .previewer.close .toggle-btn {
     left: -40px;
 }
+
+.previewer-content {
+    padding: 0.8rem;
+    font-size: 0.8rem;
+    color: var(--color-text-grey);
+    overflow: auto;
+    height: calc(100vh - 60px);
+}

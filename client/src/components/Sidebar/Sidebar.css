@@ -6,15 +6,19 @@
     transition: 0.3s;
     background: var(--color-bg-2);
     border-right: 1px solid var(--color-border-grey);
+    overflow: hidden;
 }
 
 .sidebar.close {
-    width: 0px;
+    width: 60px;
 }
 
 .sidebar .toggle-btn {
     position: relative;
-    left: 5px;
+}
+
+.sidebar.close .toggle-btn {
+    right: -40px; 
 }
 
 .sidebar-logo {

@@ -18,3 +18,79 @@
 .playcanvas.grabbing {
     cursor: grabbing;
 }
+
+.execute-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    background-color: var(--color-primary);
+    color: var(--color-bg-1);
+    font-size: 14px;
+}
+
+.execute-btn:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.last-result-summary {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    padding: 4px 8px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: var(--color-bg-1);
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.node {
+    position: absolute;
+    width: 120px;
+    padding: 8px;
+    background-color: var(--color-bg-2);
+    border: 1px solid var(--color-border-grey);
+    border-radius: 6px;
+    cursor: grab;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.node-title {
+    font-size: 12px;
+    color: var(--color-text-grey);
+    margin-bottom: 4px;
+}
+
+.node-ports {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.node-port {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+}
+
+.node-port-in {
+    background-color: var(--color-accent);
+}
+
+.edges-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2000px;
+    height: 2000px;
+    pointer-events: none;
+}
+
+.edge-line {
+    stroke: var(--color-primary);
+    stroke-width: 2;
+}
