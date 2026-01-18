@@ -17,15 +17,24 @@
 	--color-text-grey: #8a969f;
 	--color-text-dark: #0f172a;
 
+	--color-shadow-1: #e2e2e2;
+
 	--color-border-grey: #d5d5d5;
 
 	--color-bg-1: #fbfcfe;
 	--color-bg-2: #f2f5fd;
 	--color-bg-3: #e4e9f7;
 	--color-bg-dark: #0f172a;
+
+	--color-delete-red: #990d38;
+	--color-delete-red-light: #e73c5c;
 }
 
 /* Common styles */
+
+html {
+	scroll-behavior: smooth;
+}
 
 body {
 	font-family: "Plus Jakarta Sans", sans-serif;

@@ -2,6 +2,7 @@
     position: fixed;
     width: 250px;
     height: 100vh;
+    padding: 0 20px;
     background: var(--color-bg-2);
     border-left: 1px solid var(--color-border-grey);
     z-index: 10;
@@ -25,12 +26,22 @@
 
 .previewer.close {
     width: 0px;
+    padding: 0;
 }
 
 .previewer .toggle-btn {
     position: relative;
+    left: -40px;
 }
 
-.previewer.close .toggle-btn {
-    left: -40px;
+.previewer-title {
+    font-size: 1.2rem;
+    color: var(--color-text-dark);
+    font-weight: bold;
+}
+
+.previewer-guide {
+    font-style: italic;
+    color: var(--color-text-grey);
+    margin: 20px 0;
 }

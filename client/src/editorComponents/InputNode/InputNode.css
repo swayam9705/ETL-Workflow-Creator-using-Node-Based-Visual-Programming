@@ -1,0 +1,38 @@
+.common-node-file-input {
+    display: none;
+}
+
+.inputnode-file-info {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--color-border-grey);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.inputnode-upload-text {
+    padding: 0 10px;
+    color: var(--color-text-grey);
+}
+
+.inputnode:hover .inputnode-upload-icon,
+.inputnode:hover .inputnode-upload-text {
+    color: var(--color-text-dark);
+}
+
+.inputnode-file-details {
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+    height: 50px;
+    border: 1px solid var(--color-border-grey);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.inputnode-file-name {
+    width: 150px;
+    padding: 0 10px;
+    display: grid;
+    place-items: center;
+}

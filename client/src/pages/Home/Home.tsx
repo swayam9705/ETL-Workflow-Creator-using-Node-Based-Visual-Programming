@@ -4,6 +4,11 @@ import "./Home.css"
 
 import Logo from "../../images/logo.svg"
 
+import { FaCheck } from "react-icons/fa6";
+import { FaUserCircle } from "react-icons/fa";
+import { FaGear } from "react-icons/fa6";
+import { FaRobot } from "react-icons/fa";
+
 const Home = () => {
     return (
         <div className="home">
@@ -16,7 +21,7 @@ const Home = () => {
                 <div className="navbar-right">
                     <ul className="navbar-right-links">
                         <li><Link to="#">Services</Link></li>
-                        <li><Link to="#">Nodes</Link></li>
+                        <li><a href="#node-section">Nodes</a></li>
                         <li><Link to="#">Workflows</Link></li>
                     </ul>
                     <div className="navbar-right-btn">
@@ -36,6 +41,53 @@ const Home = () => {
                 <div className="home-hero-btns">
                     <Link className="blue" to="#">Get Started</Link>
                     <Link className="light" to="#">Watch Demo</Link>
+                </div>
+            </div>
+
+            {/* Node Info */}
+            <div id="node-section" className="home-node-info">
+                <div className="home-node-info-left">
+                    <h3 className="home-node-info-left-title">
+                        Master your Data Manipulation sense with <span className="special">Atomic Nodes</span>
+                    </h3>
+                    <div className="home-node-info-container">
+                        <div className="home-node-info-part">
+                            <FaCheck className="home-node-info-check-icon" />
+                            <div className="home-node-info-content">
+                                <div className="home-node-info-content-title">Stateful Memory</div>
+                                Context nodes that persist conversation state across complex branching paths.
+                            </div>
+                        </div>
+                        <div className="home-node-info-part">
+                            <FaCheck className="home-node-info-check-icon" />
+                            <div className="home-node-info-content">
+                                <div className="home-node-info-content-title">Edge Routing</div>
+                                Semantic Routing Automatically direct flow based on intent, sentiment, or data classification.
+                            </div>
+                        </div>
+                        <div className="home-node-info-part">
+                            <FaCheck className="home-node-info-check-icon" />
+                            <div className="home-node-info-content">
+                                <div className="home-node-info-content-title">Live Peek</div>
+                                Instantly have a peek inside your transformed file before having to download.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="home-node-info-right">
+                    <div className="home-node-info-right-flow">
+                        <div className="home-node-info-flow-node user">
+                            <FaUserCircle className="home-node-info-flow-icon" /> User Control
+                        </div>
+                        <div className="line"></div>
+                        <div className="home-node-info-flow-node config">
+                            <FaGear className="home-node-info-flow-icon" /> Config
+                        </div>
+                        <div className="line"></div>
+                        <div className="home-node-info-flow-node config">
+                            <FaRobot className="home-node-info-flow-icon" /> Output
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

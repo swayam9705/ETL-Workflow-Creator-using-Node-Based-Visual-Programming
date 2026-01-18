@@ -14,6 +14,10 @@ const Previewer = () => {
                     { open ? ">>" : "<<"}
                 </button>
             </div>
+            <div className="previewer-title">Previewer</div>
+            <div className="previewer-body">
+                <p className="previewer-guide">Select a Node to preview</p>
+            </div>
         </div>
     )
 }
