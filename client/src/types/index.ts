@@ -2,6 +2,7 @@ export type NodeType = 'input' | 'transform' | 'output'
 
 export type FileFormat = 'csv' | 'json' | 'xml' | 'NA'
 
+<<<<<<< HEAD
 export enum TransformType {
     FILTER = "FILTER",
     DROP_COLUMN = "DROP_COLUMN",
@@ -12,6 +13,9 @@ export enum TransformType {
     TO_UPPER = "TO_UPPER",
     TO_LOWER = "TO_LOWER"
 }
+=======
+export type TransformType = 'normalize' | 'filter' | 'map' | 'drop_column' | 'NA'
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
 
 export interface Position {
     x: number
@@ -30,9 +34,14 @@ export interface InputNodeData {
 
 export interface TransformNodeData {
     transformType: TransformType
+<<<<<<< HEAD
     columnName: string
     condition?: string // Used for operations like 'filter'
     targetValue?: string // Used for RENAME or FILL_NA
+=======
+    column: string
+    condition: string
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
 }
 
 export interface OutputNodeData {
@@ -66,7 +75,10 @@ export interface WorkflowDefinition {
 export interface Workflow {
     readonly _id: string
     name: string
+<<<<<<< HEAD
     selectedNode?: WorkflowNode | null
+=======
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
     activeSourceNode: WorkflowNode | null
     definition: WorkflowDefinition
 }

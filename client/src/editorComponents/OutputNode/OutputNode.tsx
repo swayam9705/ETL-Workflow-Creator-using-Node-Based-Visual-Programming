@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState, type FC } from "react";
 import type { NodeProps } from "../../types";
 import { MdDownload } from "react-icons/md";
@@ -14,6 +15,16 @@ const OutputNode: FC<NodeProps> = ({ node }) => {
                 ><MdDownload /></button>
             </div>
         </div>
+=======
+import type { FC } from "react";
+import type { NodeProps } from "../../types";
+
+const OutputNode: FC<NodeProps> = ({ node }) => {
+    return (
+        <>
+            this is output node:  {node._id} 
+        </>
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
     )
 }
 

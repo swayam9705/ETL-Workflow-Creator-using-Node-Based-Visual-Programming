@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useEffect, useState, type FC } from "react";
 import { TransformType, type NodeProps } from "../../types";
 
@@ -39,6 +40,16 @@ const TransformNode: FC<NodeProps> = ({ node }) => {
                 />
             </div>
         </div>
+=======
+import type { FC } from "react";
+import type { NodeProps } from "../../types";
+
+const TransformNode: FC<NodeProps> = ({ node }) => {
+    return (
+        <>
+            this is transform node { node._id }
+        </>
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
     )
 }
 

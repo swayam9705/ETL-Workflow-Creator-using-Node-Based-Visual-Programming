@@ -1,13 +1,22 @@
 import { useState } from "react"
 import "./PlayCanvas.css"
 import { useWorkflow } from "../../contexts/WorkflowContext"
+<<<<<<< HEAD
+=======
+import type { WorkflowNode } from "../../types"
+import InputNode from "../../editorComponents/InputNode/InputNode"
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
 import CommonNode from "../../editorComponents/CommonNode/CommonNode"
 import Edge from "../../editorComponents/Edge/Edge"
 
 const PlayCanvas = () => {
 
     const [isGrabbing, setGrabbing] = useState<boolean>(false)
+<<<<<<< HEAD
     const { workflow, setActiveSourceNode, setSelectedNode } = useWorkflow()
+=======
+    const { workflow, setActiveSourceNode } = useWorkflow()
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
 
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -57,6 +66,8 @@ const PlayCanvas = () => {
                 board.style.top = `${docHeight - 2000}px`
             }
         }
+
+
     }
 
     const handleMouseUp = () => {
@@ -67,9 +78,15 @@ const PlayCanvas = () => {
         }
     }
 
+<<<<<<< HEAD
     let sourceX = workflow.activeSourceNode ? workflow.activeSourceNode.position.x + 300 : 0
     let sourceY = workflow.activeSourceNode ? workflow.activeSourceNode.position.y + 25 : 0
     let curvature = 75
+=======
+    let sourceX = workflow.activeSourceNode?.position.x + 300
+    let sourceY = workflow.activeSourceNode?.position.y + 25
+    let curvature = 100
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
     const pathData = `M ${sourceX} ${sourceY} C ${sourceX + curvature} ${sourceY}, ${mousePos.x - curvature} ${mousePos.y}, ${mousePos.x} ${mousePos.y}`
 
     return (
@@ -115,7 +132,11 @@ const PlayCanvas = () => {
                             <path
                                 d={pathData}
                                 fill="none"
+<<<<<<< HEAD
                                 stroke="black"
+=======
+                                stroke="grey"
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
                                 strokeDasharray="5,5"
                             />
                         )

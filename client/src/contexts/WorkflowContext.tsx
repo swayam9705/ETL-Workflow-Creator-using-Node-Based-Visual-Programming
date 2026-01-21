@@ -10,9 +10,27 @@ type WorkflowContextType = {
     updateNode: (nodeId: string, data: Partial<WorkflowNode['data']>) => void;
     updateNodePosition: (nodeId: string, position: Position) => void;
     setActiveSourceNode: (node: WorkflowNode | null) => void;
+<<<<<<< HEAD
     setSelectedNode: (node: WorkflowNode | null) => void;
 };
 
+=======
+};
+
+const defaultInputNode: WorkflowNode = {
+    _id: 'input-node',
+    type: 'input',
+    position: { x: 950, y: 220 },
+    data: {
+        file: {
+            filename: "",
+            fileContent: "",
+            fileFormat: "csv",
+        }
+    },
+}
+
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
 const WorkflowContext = createContext<WorkflowContextType | undefined>(undefined);
 
 export const WorkflowProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -20,9 +38,14 @@ export const WorkflowProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         _id: '',
         name: '',
         activeSourceNode: null,
+<<<<<<< HEAD
         selectedNode: null,
         definition: {
             nodes: [],
+=======
+        definition: {
+            nodes: [defaultInputNode],
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
             edges: []
         },
     });
@@ -109,6 +132,7 @@ export const WorkflowProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         }
     }
 
+<<<<<<< HEAD
     const setSelectedNode = (node: WorkflowNode | null) => {
         if (node !== null) {
             setWorkflow((prev) => ({
@@ -118,6 +142,8 @@ export const WorkflowProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         }
     }
 
+=======
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
     return (
         <WorkflowContext.Provider value={{
             workflow,
@@ -127,8 +153,12 @@ export const WorkflowProvider: React.FC<{ children: React.ReactNode }> = ({ chil
             removeEdge,
             updateNode,
             updateNodePosition,
+<<<<<<< HEAD
             setActiveSourceNode,
             setSelectedNode
+=======
+            setActiveSourceNode
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
         }}>
             {children}
         </WorkflowContext.Provider>

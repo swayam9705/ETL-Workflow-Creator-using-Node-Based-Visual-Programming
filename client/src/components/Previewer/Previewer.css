@@ -34,6 +34,7 @@
     left: -40px;
 }
 
+<<<<<<< HEAD
 .previewer-title {
     font-size: 1.2rem;
     color: var(--color-text-dark);
@@ -44,4 +45,7 @@
     font-style: italic;
     color: var(--color-text-grey);
     margin: 20px 0;
+=======
+.previewer.close .toggle-btn {
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
 }

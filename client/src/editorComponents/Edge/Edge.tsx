@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { type FC } from "react";
+=======
+import { type FC } from "react";
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
 import { type WorkflowNode } from "../../types";
 import "./Edge.css"
 
@@ -16,6 +20,7 @@ const Edge: FC<EdgeProps> = ({ source, target }) => {
     const targetY = target.position.y + 25
 
     // curvature logic (bezier curve cubic)
+<<<<<<< HEAD
     const curvature = 75
     const pathData = `M ${sourceX} ${sourceY} C ${sourceX + curvature} ${sourceY}, ${targetX - curvature} ${targetY}, ${targetX} ${targetY}`
     
@@ -29,6 +34,20 @@ const Edge: FC<EdgeProps> = ({ source, target }) => {
             className="edge"
             d={pathData}
             strokeDasharray="5,5"
+=======
+    const curvature = 100
+    const pathData = `M ${sourceX} ${sourceY} C ${sourceX + curvature} ${sourceY}, ${targetX - curvature} ${targetY}, ${targetX} ${targetY}`
+    
+
+    return (
+        <path
+            className="edge"
+            d={pathData}
+            fill="none"
+            stroke="var(--color-accent-2)"
+            strokeWidth="2"
+            strokeDasharray="20,2"
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
         />
     )
 }

@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 .common-node-file-input {
+=======
+.inputnode {
+}
+
+.inputnode-file-input {
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
     display: none;
 }
 
@@ -10,6 +17,19 @@
     cursor: pointer;
 }
 
+<<<<<<< HEAD
+=======
+.inputnode-upload-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.7rem;
+    display: grid;
+    place-items: center;
+    color: var(--color-text-grey);
+    border-right: 1px solid var(--color-border-grey);
+}
+
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
 .inputnode-upload-text {
     padding: 0 10px;
     color: var(--color-text-grey);
@@ -35,4 +55,22 @@
     padding: 0 10px;
     display: grid;
     place-items: center;
+<<<<<<< HEAD
+=======
+}
+
+.inputnode-file-delete {
+    display: grid;
+    place-items: center;
+    outline: none;
+    border: none;
+    width: 50px;
+    border-left: 1px solid var(--color-border-grey);
+    background: var(--color-bg-1);
+}
+
+.inputnode-file-delete:hover {
+    background: var(--color-bg-2);
+    cursor: pointer;
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
 }

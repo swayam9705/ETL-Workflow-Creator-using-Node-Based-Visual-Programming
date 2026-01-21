@@ -15,10 +15,13 @@
     animation-fill-mode: forwards;
 }
 
+<<<<<<< HEAD
 .common-node.selected {
     outline: 2px solid var(--color-accent-1);
 }
 
+=======
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
 .common-node-header {
     height: 50px;
     border-bottom: 1px solid var(--color-accent-1);
@@ -54,6 +57,10 @@
 .common-node-body {
     padding: 20px;
     display: grid;
+<<<<<<< HEAD
+=======
+    place-items: center;
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
 }
 
 .common-node-port {
@@ -74,7 +81,11 @@
 }
 
 .common-node-select {
+<<<<<<< HEAD
     width: 120px;
+=======
+    width: 100px;
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
     height: 40px;
     border: 1px solid var(--color-border-grey);
     outline: none;
@@ -83,6 +94,7 @@
     accent-color: var(--color-accent-2);
     font-family: "Plus Jakarta Sans", sans-serif;
     padding-left: 10px;
+<<<<<<< HEAD
     color: var(--color-text-dark);
     /* font-weight: bolder; */
     text-transform: uppercase;
@@ -132,6 +144,11 @@
 .common-node-button:hover {
     background: var(--color-bg-2);
     cursor: pointer;
+=======
+    color: var(--color-text-grey);
+    font-weight: bolder;
+    text-transform: uppercase;
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
 }
 
 @keyframes appear {

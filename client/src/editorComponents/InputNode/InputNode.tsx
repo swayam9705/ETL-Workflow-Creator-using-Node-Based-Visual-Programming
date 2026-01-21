@@ -79,6 +79,7 @@ const InputNode: FC<NodeProps> = ({ node }) => {
         //     style={style}
         //     onMouseDown={handleMouseDown}
         // >
+<<<<<<< HEAD
         <div className="common-node-body inputnode-body">
             {
                 file ? 
@@ -118,6 +119,48 @@ const InputNode: FC<NodeProps> = ({ node }) => {
                 <option value="xml">xml</option>
             </select> */}
         </div>
+=======
+        <>
+            <div className="common-node-body inputnode-body">
+                {
+                    file ? 
+                    <div className="inputnode-file-details">
+                        <span className="inputnode-file-name">{file.name}</span>
+                        <button
+                            className="inputnode-file-delete"
+                            onClick={handleDeleteFile}
+                        ><ImCross /></button>
+                    </div> :
+                
+                    <div className="inputnode-upload">
+                        <input
+                            ref={fileInputRef}
+                            type="file"
+                            name={`file-input-${node._id}`}
+                            id={`file-input-${node._id}`}
+                            className="inputnode-file-input"
+                            onChange={(e) => {
+                                setFile(e.target.files ? e.target.files[0] : null)
+                                console.dir(e.target.files ? e.target.files[0] : null)
+                            }}
+                        />
+                        <div
+                            className="inputnode-file-info"
+                            onClick={() => fileInputRef.current?.click()}
+                        >
+                            <span className="inputnode-upload-icon"><MdOutlineFileUpload /></span>
+                            <span className="inputnode-upload-text">No file uploaded</span>
+                        </div>
+                    </div>
+                }
+                <select className="common-node-select" defaultValue="NA">
+                    <option value="csv">csv</option>
+                    <option value="json">json</option>
+                    <option value="xml">xml</option>
+                </select>
+            </div>
+        </>
+>>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
     )
 
 }
