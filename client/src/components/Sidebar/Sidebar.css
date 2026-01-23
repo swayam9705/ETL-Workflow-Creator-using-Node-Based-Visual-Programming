@@ -7,17 +7,13 @@
     background: var(--color-bg-2);
     border-right: 1px solid var(--color-border-grey);
     transition: 0.3s;
-<<<<<<< HEAD
 }
 
 .sidebar-logo-name {
     color: var(--color-text-dark);
-=======
->>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
 }
 
 .sidebar.close {
-    /* width: 0px; */
     left: -250px;
 }
 
@@ -77,10 +73,11 @@
 }
 
 .sidebar-part-node-item button .icon {
-    color: white;
+    color: var(--color-accent-1);
     font-size: 1.3rem;
-    background: linear-gradient(45deg, var(--color-accent-1), var(--color-accent-2));
+    /* background: var(--color-accent-2); */
     border-radius: 10px 0 0 10px;
+    border: 2px solid var(--color-accent-1);
     width: 45px;
     height: 45px;
     display: grid;

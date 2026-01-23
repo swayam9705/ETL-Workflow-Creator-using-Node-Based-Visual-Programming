@@ -12,11 +12,7 @@ import { v4 as uuidv4 } from "uuid";
 const CommonNode: FC<NodeProps> = ({ node }) => {
 
     // node position state
-<<<<<<< HEAD
     const { workflow, setActiveSourceNode, removeNode, updateNodePosition, addEdge, setSelectedNode } = useWorkflow()
-=======
-    const { workflow, setActiveSourceNode, removeNode, updateNodePosition, addEdge } = useWorkflow()
->>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
     const [position, setPosition] = useState<Position>(node.position)
     const [isDragging, setIsDragging] = useState<boolean>(false)
     const dragOffset = useRef({ x: 0, y: 0 })
@@ -33,10 +29,6 @@ const CommonNode: FC<NodeProps> = ({ node }) => {
     const handlePortMouseDown = (e: React.MouseEvent) => {
         e.stopPropagation()
         setActiveSourceNode(node)
-<<<<<<< HEAD
-=======
-        console.log("Mouse pressed on output node: ", node.type)
->>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
     }
 
     const handlePortMouseUp = (e: React.MouseEvent) => {
@@ -47,21 +39,14 @@ const CommonNode: FC<NodeProps> = ({ node }) => {
                 source: workflow.activeSourceNode,
                 target: node
             })
-<<<<<<< HEAD
-=======
-            console.log("Mouse lifted on input node of another node: ", node.type)
->>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
         }
         setActiveSourceNode(null)
     }
 
-<<<<<<< HEAD
     const handleNodeSelection = (e: React.MouseEvent) => {
         setSelectedNode(node)
     }
 
-=======
->>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
             if (isDragging) {
@@ -89,11 +74,7 @@ const CommonNode: FC<NodeProps> = ({ node }) => {
             window.removeEventListener('mousemove', handleMouseMove)
             window.removeEventListener('mouseup', handleMouseUp)
         }
-<<<<<<< HEAD
     }, [workflow, isDragging, node._id, updateNodePosition])
-=======
-    }, [isDragging, node._id, updateNodePosition])
->>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
 
     const displayNode = () => {
         switch (node.type) {
@@ -116,16 +97,10 @@ const CommonNode: FC<NodeProps> = ({ node }) => {
 
     return (
         <div
-<<<<<<< HEAD
             className={`common-node ${workflow.selectedNode?._id === node._id ? "selected" : ""}`}
             style={style}
             onMouseDown={handleMouseDown}
             onClick={handleNodeSelection}
-=======
-            className="common-node"
-            style={style}
-            onMouseDown={handleMouseDown}
->>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
         >
             {/* Node ports */}
             {node.type !== 'input' && (

@@ -1,23 +1,13 @@
 .edge {
     fill: none;
     stroke: var(--color-accent-2);
-<<<<<<< HEAD
     stroke-width: 3px;
     animation: flow 0.3s linear infinite;
-=======
-    stroke-width: 2px;
-    stroke-dashoffset: 10,5;
-    animation: flow 1s linear infinite;
->>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
 }
 
 @keyframes flow {
     from {
-<<<<<<< HEAD
         stroke-dashoffset: 10;
-=======
-        stroke-dashoffset: 30;
->>>>>>> 105a1b92e8841836cf971b7309f0fba1dffb7fa9
     }
     to {
         stroke-dashoffset: 0;

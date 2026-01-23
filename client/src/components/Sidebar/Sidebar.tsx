@@ -97,7 +97,7 @@ const Sidebar = () => {
                             <button
                                 onClick={createNewTransformNode} 
                             >
-                                <span className="icon"><IoSettingsOutline /></span> Normalization
+                                <span className="icon"><IoSettingsOutline /></span> Transformation
                             </button>
                         </li>
                         <li className="sidebar-part-node-item">
