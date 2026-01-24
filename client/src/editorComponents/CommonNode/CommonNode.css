@@ -4,8 +4,8 @@
     border: 1px solid var(--color-accent-1);
     border-radius: 10px;
     background: var(--color-bg-1);
-    /* background: transparent; */
-    /* backdrop-filter: blur(10px); */
+    background: transparent;
+    backdrop-filter: blur(5px);
     width: 300px;
     box-shadow: 0 10px 20px lightgrey;
     animation-name: appear;

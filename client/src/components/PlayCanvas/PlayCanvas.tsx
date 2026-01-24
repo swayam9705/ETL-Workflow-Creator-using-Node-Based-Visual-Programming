@@ -10,9 +10,20 @@ const PlayCanvas = () => {
     const { workflow, setActiveSourceNode, setSelectedNode } = useWorkflow()
 
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+    const [zoom, setZoom] = useState<number>(1);
+    const MIN_ZOOM = 0.4;
+    const MAX_ZOOM = 2;
+    const SCROLL_SENSITIVITY = 0.001;
 
     const handleMouseDown = () => {
         setGrabbing(true)
+    }
+
+    const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+        setZoom((prevZoom) => {
+            const newZoom = prevZoom - e.deltaY * SCROLL_SENSITIVITY;
+            return Math.min(Math.max(newZoom, MIN_ZOOM), MAX_ZOOM);
+        })
     }
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -35,11 +46,11 @@ const PlayCanvas = () => {
                 board.style.left = "0px"
             }
 
-            if (board.offsetLeft >= docWidth - 2000) {
+            if (board.offsetLeft >= docWidth - 4000) {
                 board.style.left = `${e.movementX + board.offsetLeft}px`
             }
             else {
-                board.style.left = `${docWidth - 2000}px`
+                board.style.left = `${docWidth - 4000}px`
             }
 
 
@@ -50,11 +61,11 @@ const PlayCanvas = () => {
                 board.style.top = "0px"
             }
 
-            if (board.offsetTop > docHeight - 2000) {
+            if (board.offsetTop > docHeight - 4000) {
                 board.style.top = `${e.movementY + board.offsetTop}px`
             }
             else {
-                board.style.top = `${docHeight - 2000}px`
+                board.style.top = `${docHeight - 4000}px`
             }
         }
 
@@ -78,12 +89,18 @@ const PlayCanvas = () => {
         <div
             className="playcanvas-container"
             onClick={() => setSelectedNode(null)}
+            onWheel={handleWheel}
         >
             <div
                 className={isGrabbing ? "playcanvas grabbing" : "playcanvas"}
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
+                style={{
+                    transform: `scale(${zoom})`,
+                    transformOrigin: "0 0", // Adjust to "center center" if preferred
+                    transition: "transform 0.05s ease-out" // Optional: smooths the zoom
+                }}
             >
                 <svg className="playcanvas-svg-layer" width="2000" height="2000">
                     {
@@ -106,14 +123,6 @@ const PlayCanvas = () => {
                     {
                         // Render active node
                         workflow.activeSourceNode && (
-                            // <line
-                            //     x1={workflow.activeSourceNode.position.x + 300}
-                            //     y1={workflow.activeSourceNode.position.y + 20}
-                            //     x2={mousePos.x}
-                            //     y2={mousePos.y}
-                            //     stroke="#ccc"
-                            //     strokeDasharray="5,5"
-                            // />
                             <path
                                 d={pathData}
                                 fill="none"

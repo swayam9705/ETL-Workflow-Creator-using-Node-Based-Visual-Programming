@@ -1,13 +1,14 @@
 import { useState } from "react"
 import { v4 as uuidv4 } from "uuid"
 import { Link } from "react-router"
-import type { Workflow, WorkflowNode } from "../../types"
+import { TransformType, type WorkflowNode } from "../../types"
 import { useWorkflow } from "../../contexts/WorkflowContext"
 import Logo from "../../images/logo.svg"
 import "./Sidebar.css"
 import { LuFileInput } from "react-icons/lu"
 import { IoSettingsOutline } from "react-icons/io5"
 import { HiLightningBolt } from "react-icons/hi";
+import { HiOutlineArrowSmRight } from "react-icons/hi";
 
 const Sidebar = () => {
 
@@ -20,10 +21,11 @@ const Sidebar = () => {
             type: "input",
             position: { x: 400, y: 40 },
             data: {
-                file: {
+                fileData: {
                     filename: "",
                     fileContent: "",
-                    fileFormat: 'NA'
+                    fileFormat: "NA",
+                    file: null
                 }
             },
         }
@@ -37,8 +39,8 @@ const Sidebar = () => {
             type: "transform",
             position: {x: 500, y: 100},
             data: {
-                transformType: 'NA',
-                column: 'NA',
+                transformType: TransformType.NA,
+                columnName: 'NA',
                 condition: 'NA'
             }
         }
@@ -52,10 +54,11 @@ const Sidebar = () => {
             type: 'output',
             position: {x: 600, y: 200},
             data: {
-                file: {
-                    filename: 'NA',
-                    fileContent: 'NA',
-                    fileFormat: 'NA'
+                fileData: {
+                    filename: '',
+                    fileContent: '',
+                    fileFormat: '',
+                    file: null
                 }
             }
         }
@@ -108,6 +111,11 @@ const Sidebar = () => {
                             </button>
                         </li>
                     </ul>
+                </div>
+                <div className="sidebar-part">
+                    <button className="sidebar-exec-btn">
+                        Execute <HiOutlineArrowSmRight />
+                    </button>
                 </div>
                 <button
                     onClick={() => {console.dir(workflow)}} 

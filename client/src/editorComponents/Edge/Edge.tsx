@@ -1,11 +1,6 @@
 import React, { type FC } from "react";
-import { type WorkflowNode } from "../../types";
+import type { EdgeProps } from "../../types";
 import "./Edge.css"
-
-interface EdgeProps {
-    source: WorkflowNode
-    target: WorkflowNode
-}
 
 const Edge: FC<EdgeProps> = ({ source, target }) => {
     // offset to center the line on the ports (assume node width/height)

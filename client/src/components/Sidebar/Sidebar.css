@@ -83,3 +83,25 @@
     display: grid;
     place-items: center;
 }
+
+.sidebar-exec-btn {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid var(--color-accent-1);
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color-bg-1);
+    background: var(--color-accent-1);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sidebar-exec-btn:hover {
+    background: transparent;
+    color: var(--color-accent-1);
+}

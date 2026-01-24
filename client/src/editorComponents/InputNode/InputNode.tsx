@@ -1,5 +1,6 @@
 import React, { type FC, useState, useRef } from "react"
 import type { NodeProps } from "../../types"
+import { useWorkflow } from "../../contexts/WorkflowContext"
 import "./InputNode.css"
 
 import { MdOutlineFileUpload } from "react-icons/md"
@@ -7,29 +8,13 @@ import { ImCross } from "react-icons/im"
 
 const InputNode: FC<NodeProps> = ({ node }) => {
     
-    // node position state
-    // const { updateNodePosition } = useWorkflow()
-    // const [position, setPosition] = useState<Position>(node.position)
-    // const [isDragging, setIsDragging] = useState(false)
-    // const dragOffset = useRef({ x: 0, y: 0 })
-
-
     // node file state
     const fileInputRef = useRef<HTMLInputElement>(null)
     const [ file, setFile ] = useState<File | null>(null)
 
-    // useEffect(() => {
-    //     setPosition(node.position)
-    // }, [node.position])
+    const { updateNode } = useWorkflow()
 
-    // const handleMouseDown = (e: React.MouseEvent) => {
-    //     e.stopPropagation()
-    //     setIsDragging(true)
-    //     dragOffset.current = {
-    //         x: e.clientX - position.x,
-    //         y: e.clientY - position.y
-    //     }
-    // }
+    
 
     const handleDeleteFile = (e: React.MouseEvent) => {
         e.stopPropagation()
@@ -37,48 +22,26 @@ const InputNode: FC<NodeProps> = ({ node }) => {
         if (fileInputRef.current) {
             fileInputRef.current.value = ""
         }
+        updateNode(node._id, {
+            fileData: {
+                filename: '',
+                fileContent: '',
+                fileFormat: 'NA',
+                file: null
+            }
+        })
     }
 
-    // useEffect(() => {
-    //     const handleMouseMove = (e: MouseEvent) => {
-    //         if (isDragging) {
-    //             setPosition({
-    //                 x: e.clientX - dragOffset.current.x,
-    //                 y: e.clientY - dragOffset.current.y
-    //             })
-    //         }
-    //     }
-
-    //     const handleMouseUp = () => {
-    //         if (isDragging) {
-    //             setIsDragging(false)
-    //             updateNodePosition(node._id, position)
-    //         }
-    //     }
-
-    //     if (isDragging) {
-    //         window.addEventListener('mousemove', handleMouseMove)
-    //         window.addEventListener('mouseup', handleMouseUp)
-    //     }
-
-    //     return () => {
-    //         window.removeEventListener('mousemove', handleMouseMove)
-    //         window.removeEventListener('mouseup', handleMouseUp)
-    //     }
-    // }, [isDragging, node._id, position, updateNodePosition])
-
-    // const style: CSSProperties = {
-    //     left: position.x,
-    //     top: position.y,
-    //     cursor: isDragging ? 'grabbing' : 'grab',
-    // }
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFile(e.target.files[0])
+        updateNode(node._id, {
+            fileData: {
+                file: e.target.files[0]
+            }
+        })
+    }
 
     return (
-        // <div
-        //     className="common-node inputnode"
-        //     style={style}
-        //     onMouseDown={handleMouseDown}
-        // >
         <div className="common-node-body inputnode-body">
             {
                 file ? 
@@ -97,10 +60,7 @@ const InputNode: FC<NodeProps> = ({ node }) => {
                         name={`file-input-${node._id}`}
                         id={`file-input-${node._id}`}
                         className="common-node-file-input"
-                        onChange={(e) => {
-                            setFile(e.target.files ? e.target.files[0] : null)
-                            console.dir(e.target.files ? e.target.files[0] : null)
-                        }}
+                        onChange={handleFileChange}
                     />
                     <div
                         className="inputnode-file-info"

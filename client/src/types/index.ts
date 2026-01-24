@@ -10,7 +10,8 @@ export enum TransformType {
     FILL_NA = "FILL_NA",
     TRIM = "TRIM",
     TO_UPPER = "TO_UPPER",
-    TO_LOWER = "TO_LOWER"
+    TO_LOWER = "TO_LOWER",
+    NA = 'NA'
 }
 
 export interface Position {
@@ -19,13 +20,14 @@ export interface Position {
 }
 
 export interface IFile {
-    filename: string,
-    fileContent: string,
-    fileFormat: string
+    filename?: string
+    fileContent?: string
+    fileFormat?: string
+    file: File | null
 }
 
 export interface InputNodeData {
-    file: IFile
+    fileData: IFile
 }
 
 export interface TransformNodeData {
@@ -36,7 +38,7 @@ export interface TransformNodeData {
 }
 
 export interface OutputNodeData {
-    file: IFile
+    fileData: IFile
 }
 
 // this interface is common for all the nodes
@@ -50,6 +52,11 @@ export interface WorkflowNode {
 // only to be passed as the argument for FC
 export interface NodeProps {
     node: WorkflowNode
+}
+
+export interface EdgeProps {
+    source: WorkflowNode
+    target: WorkflowNode
 }
 
 export interface WorkflowEdge {
