@@ -118,14 +118,17 @@ const CommonNode: FC<NodeProps> = ({ node }) => {
 
             <div className="common-node-header">
                 <span className="common-node-title">{node.type}</span>
-                <button
-                    onClick={() => removeNode(node._id)}
-                    className="common-node-delete"
-                >
-                    <MdDeleteOutline />
-                </button>
+                {
+                    node._id !== "###_DEFAULT_INPUT_FILE_NODE_###" &&
+                    (<button
+                        onClick={() => removeNode(node._id)}
+                        className="common-node-delete"
+                    >
+                        <MdDeleteOutline />
+                    </button>)
+                }
             </div>
-            {displayNode()}
+            { displayNode() }
         </div>
     )
 }

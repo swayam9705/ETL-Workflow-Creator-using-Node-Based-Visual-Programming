@@ -1,8 +1,10 @@
 import { useState } from "react"
 import "./Previewer.css"
+import { useWorkflow } from "../../contexts/WorkflowContext"
 
 const Previewer = () => {
     const [ open, setOpen ] = useState(true)
+    const { workflow } = useWorkflow()
 
     return (
         <div className={open ? "previewer" : "previewer close"}>
@@ -16,7 +18,14 @@ const Previewer = () => {
             </div>
             <div className="previewer-title">Previewer</div>
             <div className="previewer-body">
-                <p className="previewer-guide">Select a Node to preview</p>
+                {
+                    workflow.selectedNode ? 
+                    (
+                        <p>{ workflow.selectedNode._id }</p>
+                    )
+                    :
+                    (<p className="previewer-guide">Select a Node to preview</p>)
+                }
             </div>
         </div>
     )

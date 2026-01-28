@@ -9,29 +9,13 @@ import { LuFileInput } from "react-icons/lu"
 import { IoSettingsOutline } from "react-icons/io5"
 import { HiLightningBolt } from "react-icons/hi";
 import { HiOutlineArrowSmRight } from "react-icons/hi";
+import { useInputFile } from "../../contexts/InputFileContext"
 
 const Sidebar = () => {
 
     const [open, setOpen] = useState<boolean>(true)
     const { workflow, addNode } = useWorkflow()
-
-    const createNewInputNode = () => {
-        const newInputNode: WorkflowNode = {
-            _id: uuidv4(),
-            type: "input",
-            position: { x: 400, y: 40 },
-            data: {
-                fileData: {
-                    filename: "",
-                    fileContent: "",
-                    fileFormat: "NA",
-                    file: null
-                }
-            },
-        }
-
-        addNode(newInputNode)
-    }
+    const { file, getCSVColumns } = useInputFile()
 
     const createNewTransformNode = () => {
         const newTransformNode: WorkflowNode = {
@@ -65,6 +49,15 @@ const Sidebar = () => {
         addNode(newOutputNode)
     }
 
+    const showGraph = () => {
+        console.log(workflow)
+        if (file) {
+            getCSVColumns()
+                .then(data => console.log(data))
+                .catch(err => console.log(err))
+        }
+    }
+
     return (
         <div className={open ? "sidebar" : "sidebar close"}>
             <div className="sidebar-btn">
@@ -89,13 +82,13 @@ const Sidebar = () => {
                         Editor Nodes
                     </div>
                     <ul className="sidebar-part-nodes">
-                        <li className="sidebar-part-node-item">
+                        {/* <li className="sidebar-part-node-item">
                             <button
                                 onClick={createNewInputNode} 
                             >
                                 <span className="icon"><LuFileInput /></span> File Input Node
                             </button>
-                        </li>
+                        </li> */}
                         <li className="sidebar-part-node-item">
                             <button
                                 onClick={createNewTransformNode} 
@@ -118,7 +111,7 @@ const Sidebar = () => {
                     </button>
                 </div>
                 <button
-                    onClick={() => {console.dir(workflow)}} 
+                    onClick={showGraph}
                 >Show graph</button>
             </div>
         </div>

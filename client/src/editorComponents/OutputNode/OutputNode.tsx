@@ -8,10 +8,14 @@ const OutputNode: FC<NodeProps> = ({ node }) => {
     return (
         <div className="common-node-body outputnode-body">
             <div className="common-node-output-file-container">
-                <span className="common-node-output-file">{ fileName }</span>
-                <button
-                    className="common-node-button" 
-                ><MdDownload /></button>
+                <span className="common-node-output-file">{ node.data.fileData?.file && node.data.fileData?.file.name }</span>
+                {
+                    node.data.fileData?.file ? 
+                    (<button
+                        className="common-node-button" 
+                    ><MdDownload /></button>)
+                    : <span className="common-node-output-">No file available</span>
+                }
             </div>
         </div>
     )

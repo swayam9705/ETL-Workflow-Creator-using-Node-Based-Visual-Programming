@@ -1,6 +1,6 @@
 .previewer {
     position: fixed;
-    width: 250px;
+    width: 550px;
     height: 100vh;
     padding: 0 20px;
     background: var(--color-bg-2);
@@ -31,7 +31,7 @@
 
 .previewer .toggle-btn {
     position: relative;
-    left: -40px;
+    left: -60px;
 }
 
 .previewer-title {

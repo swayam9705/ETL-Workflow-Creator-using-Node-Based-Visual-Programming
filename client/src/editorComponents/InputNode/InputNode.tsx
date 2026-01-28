@@ -5,6 +5,8 @@ import "./InputNode.css"
 
 import { MdOutlineFileUpload } from "react-icons/md"
 import { ImCross } from "react-icons/im"
+import { useInputFile } from "../../contexts/InputFileContext"
+import { getFileExtension } from "../../utils/functions"
 
 const InputNode: FC<NodeProps> = ({ node }) => {
     
@@ -13,8 +15,7 @@ const InputNode: FC<NodeProps> = ({ node }) => {
     const [ file, setFile ] = useState<File | null>(null)
 
     const { updateNode } = useWorkflow()
-
-    
+    const { setInputFile } = useInputFile()
 
     const handleDeleteFile = (e: React.MouseEvent) => {
         e.stopPropagation()
@@ -30,15 +31,25 @@ const InputNode: FC<NodeProps> = ({ node }) => {
                 file: null
             }
         })
+
+        setInputFile(null)
     }
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFile(e.target.files[0])
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files && e.target?.files[0]
+        const content = await file?.text()
+
+        setFile(file)
         updateNode(node._id, {
             fileData: {
-                file: e.target.files[0]
+                filename: file?.name,
+                file: file,
+                fileFormat: getFileExtension(file?.name),
+                fileContent: content
             }
         })
+
+        setInputFile(file)
     }
 
     return (
@@ -57,6 +68,7 @@ const InputNode: FC<NodeProps> = ({ node }) => {
                     <input
                         ref={fileInputRef}
                         type="file"
+                        accept=".csv, .xml, .json"
                         name={`file-input-${node._id}`}
                         id={`file-input-${node._id}`}
                         className="common-node-file-input"

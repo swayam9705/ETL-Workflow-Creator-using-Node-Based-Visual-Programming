@@ -1,10 +1,16 @@
-import { useEffect, useState, type FC } from "react";
-import { TransformType, type NodeProps } from "../../types";
+import { useEffect, useState, useRef, type FC } from "react";
+import { TransformType, Operator, type NodeProps } from "../../types";
 import { useWorkflow } from "../../contexts/WorkflowContext";
+import { HiMiniChevronUpDown } from "react-icons/hi2";
+
+import "./TransformNode.css"
+import { useInputFile } from "../../contexts/InputFileContext";
 
 const TransformNode: FC<NodeProps> = ({ node }) => {
     
-    const { updateNode } = useWorkflow()
+    const { workflow, updateNode } = useWorkflow()
+    const { file, getCSVColumns } = useInputFile()
+    const [ min, setMin ] = useState(false)
 
     const [ transform, setTransform ] = useState({
         transformType: 'NA',
@@ -12,6 +18,8 @@ const TransformNode: FC<NodeProps> = ({ node }) => {
         condition: '',
         targetValue: ''
     })
+
+    const [ columnNames, setColumns ] = useState<string[]>([])
 
     const handleTransformChange = (e: React.ChangeEvent<HTMLSelectElement|HTMLInputElement>) => {
         setTransform(prev => ({
@@ -23,43 +31,83 @@ const TransformNode: FC<NodeProps> = ({ node }) => {
         })
     }
 
-    const transformations = Object.values(TransformType).map(type => type)
+    const toggleNode = (e: React.MouseEvent<HTMLButtonElement>) => {
+        setMin(prev => !prev)
+    }
+
+    useEffect(() => {
+        if (file) {
+            getCSVColumns()
+                .then(data => setColumns(data))
+                .catch(err => console.log(err))
+        }
+    }, [file])
 
     return (
-        <div className="common-node-body transformnode-body">
+        <div
+            className={`common-node-body transformnode-body ${min && 'close'}`}
+        >
             <div className="common-node-select-container">
-                <label htmlFor="transformType" className="common-node-label">Select Transformation</label>
+                <label
+                    htmlFor="transformType"
+                    className="common-node-label"
+                >Select Transformation</label>
                 <select
                     name="transformType"
+                    // id="transformtype"
                     className="common-node-select"
                     defaultValue="transform"
                     onChange={handleTransformChange}
                 >
                     {
-                        transformations.map(type => <option key={type} value={type}>{ type }</option>)
+                        Object.values(TransformType).map(type => <option key={type} value={type}>{ type }</option>)
                     }
                 </select>
             </div>
             <div className="common-node-input-container">
-                <label htmlFor="columnName" className="common-node-label">Column Name</label>
-                <input
-                    className="common-node-input"
-                    type="text"
+                <label
+                    htmlFor="columnName"
+                    className="common-node-label"
+                >Column Name</label>
+                <select
                     name="columnName"
-                    placeholder="Eg. `salary`"
+                    id="columnName"
+                    className="common-node-select"
+                >
+                    {
+                        file && columnNames.map(col => <option key={col} value={col}>{ col }</option>)
+                    }
+                </select>
+            </div>
+            <div className="common-node-select-container">
+                <label
+                    htmlFor="columnType"
+                    className="common-node-label"
+                >Column Type</label>
+                <select
+                    name="columnType"
+                    id="columnType"
+                    className="common-node-select"
+                    defaultValue="string"
                     onChange={handleTransformChange}
-                />
+                >
+                    <option value="string">String</option>
+                    <option value="numeric">Numeric</option>
+                </select>
             </div>
             <div className="common-node-input-container">
-                <label htmlFor="condition" className="common-node-label">Condition</label>
+                <label htmlFor="targetValue">Target Value</label>
                 <input
-                    className="common-node-input"
                     type="text"
-                    name="condition"
-                    placeholder="Eg. age >= 20"
+                    name="targetValue"
+                    className="common-node-input"
                     onChange={handleTransformChange}
                 />
             </div>
+            <button
+                onClick={toggleNode} 
+                className="transformnode-body-toggle-btn"
+            ><HiMiniChevronUpDown /></button>
         </div>
     )
 }

@@ -15,6 +15,20 @@ type WorkflowContextType = {
 
 const WorkflowContext = createContext<WorkflowContextType | undefined>(undefined);
 
+const defaultInputFileNodeData: WorkflowNode = {
+    _id: "###_DEFAULT_INPUT_FILE_NODE_###",
+    type: 'input',
+    position: {x: 300, y: 200},
+    data: {
+        fileData: {
+            filename: '',
+            fileContent: '',
+            fileFormat: '',
+            file: null
+        }
+    }
+}
+
 export const WorkflowProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [workflow, setWorkflow] = useState<Workflow>({
         _id: '',
@@ -22,7 +36,10 @@ export const WorkflowProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         activeSourceNode: null,
         selectedNode: null,
         definition: {
-            nodes: [],
+            nodes: [
+                // this node will remain in the canvas by default, and user will not be able to delete this
+                defaultInputFileNodeData
+            ],
             edges: []
         },
     });
@@ -117,6 +134,7 @@ export const WorkflowProvider: React.FC<{ children: React.ReactNode }> = ({ chil
             }))
         }
     }
+
 
     return (
         <WorkflowContext.Provider value={{

@@ -14,6 +14,15 @@ export enum TransformType {
     NA = 'NA'
 }
 
+export enum Operator {
+    E = "=",
+    NE = "!=",
+    GT = ">",
+    LT = "<",
+    GE = ">=",
+    LE = "<="
+}
+
 export interface Position {
     x: number
     y: number
@@ -33,6 +42,7 @@ export interface InputNodeData {
 export interface TransformNodeData {
     transformType: TransformType
     columnName: string
+    columnType?: "string" | "numeric"
     condition?: string // Used for operations like 'filter'
     targetValue?: string // Used for RENAME or FILL_NA
 }
